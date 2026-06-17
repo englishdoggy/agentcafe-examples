@@ -1,0 +1,19 @@
+{
+  "name": "agent-cafe-example-ts",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "challenge": "tsx pay.ts",
+    "pay": "tsx pay.ts"
+  },
+  "dependencies": {
+    "@x402/fetch": "^2.15.0",
+    "@x402/evm": "^2.15.0",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0"
+  },
+  "engines": { "node": ">=20" }
+}

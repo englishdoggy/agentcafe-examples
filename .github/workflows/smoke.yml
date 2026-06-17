@@ -1,0 +1,19 @@
+name: smoke
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 */6 * * *"   # every 6 hours — catch endpoint regressions early
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Smoke-test the live x402 endpoint (no funds needed)
+        run: node test/smoke.mjs

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agent Café — browser 402 demo</title>
+<style>
+  body { font: 15px/1.6 system-ui, sans-serif; background: #1a1410; color: #f2e9df; max-width: 680px; margin: 40px auto; padding: 0 20px; }
+  code, pre { font-family: ui-monospace, "JetBrains Mono", monospace; }
+  a { color: #e8a33d; }
+  button { background: #e8a33d; color: #1a1410; border: 0; border-radius: 6px; padding: 9px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+  .box { background: #221a14; border: 1px solid #3a2c20; border-radius: 8px; padding: 16px; margin-top: 16px; white-space: pre-wrap; word-break: break-all; }
+  .muted { color: #b6a48f; }
+</style>
+</head>
+<body>
+  <h1>Agent Café — browser 402 demo</h1>
+  <p class="muted">
+    Proves a browser <code>fetch()</code> can reach the live endpoint and read the x402
+    <strong>402</strong> challenge (i.e. CORS is configured correctly). This does
+    <strong>not</strong> spend USDC — actually paying needs a wallet/signer.
+  </p>
+  <button id="go">POST /order/espresso</button>
+  <pre class="box" id="out">Click the button to make a real (unpaid) request…</pre>
+  <p class="muted">
+    <a href="https://402.coffee">402.coffee</a> ·
+    <a href="https://api.402.coffee/docs">docs</a>
+  </p>
+  <script>
+    const out = document.getElementById("out");
+    document.getElementById("go").addEventListener("click", async () => {
+      out.textContent = "requesting…";
+      try {
+        const r = await fetch("https://api.402.coffee/order/espresso", { method: "POST" });
+        const challenge = r.headers.get("payment-required");
+        out.textContent =
+          "HTTP " + r.status + " (expected 402)\n\n" +
+          "payment-required header readable from JS: " + (challenge ? "yes ✓" : "no") +
+          (challenge ? "\n\n" + challenge.slice(0, 120) + "…" : "");
+      } catch (e) {
+        out.textContent = "error: " + e.message;
+      }
+    });
+  </script>
+</body>
+</html>
