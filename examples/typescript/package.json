@@ -6,7 +6,8 @@
   "scripts": {
     "challenge": "tsx pay.ts",
     "pay": "tsx pay.ts",
-    "certify": "tsx certify.ts"
+    "certify": "tsx certify.ts",
+    "scam": "tsx scam.ts"
   },
   "dependencies": {
     "@x402/fetch": "^2.15.0",
