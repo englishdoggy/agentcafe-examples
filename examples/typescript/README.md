@@ -21,3 +21,20 @@ What it does:
 3. Retry with the payment header → `200` + JSON receipt, and the settlement tx in the `payment-response` header.
 
 Want a bigger order? Change the URL to `/order/flat-white` ($1), `/order/the-good-stuff` ($10), or `/order/buy-a-round` ($100).
+
+## Certify your client (conformance)
+
+`certify.ts` runs the [conformance harness](https://api.402.coffee/inspect): it pays a test route and prints a public **certificate** URL + a **README badge** describing exactly what your client did.
+
+```bash
+# Free — see the conformance menu (no wallet, no spend):
+npm run certify
+
+# $0.25 — basic certificate (proves your agent completes a real x402 payment):
+PAYER_PRIVATE_KEY=0xYOUR_KEY npm run certify
+
+# $5.00 — full suite (paid + exact amount + network + recipient):
+PAYER_PRIVATE_KEY=0xYOUR_KEY TEST=suite npm run certify
+```
+
+Every result is a fact the endpoint directly observed in your payment — not a subjective grade, and never a "safe" guarantee.

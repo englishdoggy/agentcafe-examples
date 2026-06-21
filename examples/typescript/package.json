@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "challenge": "tsx pay.ts",
-    "pay": "tsx pay.ts"
+    "pay": "tsx pay.ts",
+    "certify": "tsx certify.ts"
   },
   "dependencies": {
     "@x402/fetch": "^2.15.0",

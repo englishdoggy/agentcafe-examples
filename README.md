@@ -43,6 +43,25 @@ curl -i -X POST https://api.402.coffee/order/espresso
 # → HTTP/2 402, with a base64 x402 challenge in the "payment-required" header
 ```
 
+## Certify your x402 client
+
+Agent Café also runs an **x402 client conformance harness** — the inverse of the tools that grade *servers*. Point your **paying agent** at a test route; it pays, and you get back a public, timestamped **certificate** of exactly what your client did, plus a **README badge**. Because you can't fake an on-chain payment, it's real proof your agent can transact.
+
+```bash
+cd examples/typescript && npm install
+
+# Free — see the conformance menu, no wallet, no spend:
+npm run certify
+
+# Certify for real ($0.25) → certificate + badge:
+PAYER_PRIVATE_KEY=0xYOUR_KEY npm run certify
+
+# Full suite ($5) → paid + exact amount + network + recipient:
+PAYER_PRIVATE_KEY=0xYOUR_KEY TEST=suite npm run certify
+```
+
+Browse the menu in a browser: **https://api.402.coffee/inspect** · Every result is a fact the endpoint directly observed in your payment — not a subjective grade, never a "safe" guarantee.
+
 ## Tests / CI
 
 [`test/smoke.mjs`](test/smoke.mjs) is a dependency-free Node check that asserts the endpoint is healthy and challenges correctly — no funds needed. It runs in CI on every push (see [`.github/workflows/smoke.yml`](.github/workflows/smoke.yml)); copy it into your own pipeline to fail your build if your agent's payment target ever goes down.
