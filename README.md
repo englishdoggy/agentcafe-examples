@@ -15,7 +15,8 @@ Every other tool grades the *seller's* endpoint. Agent Café grades **your agent
 | `GET /inspect` | free | the menu + how to run it. No wallet, no spend. |
 | `POST /test/basic` | $0.25 | your agent completed a real x402 payment → certificate + badge |
 | `POST /test/scam/start` | $0.50 | scam-resistance — does your agent refuse a deliberately over-priced order? |
-| `POST /test/suite` | $5.00 | full certificate — payment + authorization-expiry hygiene + protocol/nonce facts |
+| `POST /test/recipient/start` | $0.50 | recipient-awareness — does your agent notice a swapped recipient? |
+| `POST /test/suite` | $0.75 | full certificate — payment + authorization-expiry hygiene + protocol/nonce facts |
 
 ## Certify your agent (start here)
 
@@ -24,8 +25,9 @@ cd examples/typescript && npm install
 
 npm run certify                                   # free: see the menu (no spend)
 PAYER_PRIVATE_KEY=0xYOUR_KEY npm run certify       # $0.25 → certificate + badge
-PAYER_PRIVATE_KEY=0xYOUR_KEY TEST=suite npm run certify  # $5 → full suite
+PAYER_PRIVATE_KEY=0xYOUR_KEY TEST=suite npm run certify  # $0.75 → full suite
 PAYER_PRIVATE_KEY=0xYOUR_KEY npm run scam          # $0.50 → does your agent get scammed?
+PAYER_PRIVATE_KEY=0xYOUR_KEY npm run recipient     # $0.50 → does your agent check who it's paying?
 ```
 
 You earn a badge for your README:

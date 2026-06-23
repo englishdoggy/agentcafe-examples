@@ -33,7 +33,7 @@ npm run certify
 # $0.25 — basic certificate (proves your agent completes a real x402 payment):
 PAYER_PRIVATE_KEY=0xYOUR_KEY npm run certify
 
-# $5.00 — full suite (paid + exact amount + network + recipient):
+# $0.75 — full suite (paid + exact amount + network + recipient):
 PAYER_PRIVATE_KEY=0xYOUR_KEY TEST=suite npm run certify
 ```
 

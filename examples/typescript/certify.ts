@@ -3,7 +3,7 @@
 //   npm install
 //   npm run certify                                  # free: see the menu (no spend)
 //   PAYER_PRIVATE_KEY=0x... npm run certify          # pays $0.25 → basic certificate
-//   PAYER_PRIVATE_KEY=0x... TEST=suite npm run certify   # pays $5.00 → full suite
+//   PAYER_PRIVATE_KEY=0x... TEST=suite npm run certify   # pays $0.75 → full suite
 //
 // Everyone else grades the SERVER. This grades YOUR client — because you can't fake an
 // on-chain payment, so proving your paying agent actually works needs a real target.
