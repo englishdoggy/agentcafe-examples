@@ -3,11 +3,11 @@
 set -euo pipefail
 
 echo "== POST with no payment → expect HTTP 402 + an x402 challenge =="
-curl -i -X POST https://api.402.coffee/order/espresso
+curl -i -X POST https://api.402.coffee/test/basic
 
 echo
 echo "== decode the challenge (scheme=exact, network=eip155:8453, amount, USDC asset, payTo) =="
-curl -s -i -X POST https://api.402.coffee/order/espresso \
+curl -s -i -X POST https://api.402.coffee/test/basic \
   | tr -d '\r' \
   | awk 'tolower($1)=="payment-required:"{print $2}' \
   | base64 -d 2>/dev/null | sed 's/.*/&/' || true
