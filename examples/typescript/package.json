@@ -8,7 +8,9 @@
     "pay": "tsx pay.ts",
     "certify": "tsx certify.ts",
     "scam": "tsx scam.ts",
-    "recipient": "tsx recipient.ts"
+    "recipient": "tsx recipient.ts",
+    "verify": "tsx score.ts",
+    "score": "tsx score.ts"
   },
   "dependencies": {
     "@x402/fetch": "^2.15.0",
