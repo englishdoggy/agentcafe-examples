@@ -1,0 +1,20 @@
+# Dogfood: 402.coffee re-certifies its own example client weekly, so the badge
+# in this README is always CURRENT (credentials are valid 30 days).
+# Free verify runs on every PR — costs nothing, needs no secret.
+name: 402coffee weekly re-cert
+on:
+  schedule:
+    - cron: "0 7 * * 1" # Mondays 07:00 UTC
+  workflow_dispatch: {}
+
+jobs:
+  recert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: englishdoggy/certify-action@v1
+        id: cert
+        with:
+          wallet-key: ${{ secrets.X402_TEST_WALLET_KEY }}
+          tests: basic
+      - name: Badge
+        run: echo "${{ steps.cert.outputs.badge-markdown }}"
